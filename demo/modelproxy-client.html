@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://s.tbcdn.cn/g/kissy/k/1.4.1/seed.js"></script>
+<script src="modelproxy-client.js" ></script>
+</head>
+<body>
+<div>
+    id: <input id='id'/><br>
+    content: <textarea id='content'></textarea>
+    <button id='postBtn'>click me to post request!</button>
+</div>
+
+<script type="text/javascript">
+    KISSY.use( "modelproxy, node", function( S, ModelProxy, Node ) {
+        ModelProxy.configBase( '/model/' );
+        var searchModel = ModelProxy.create( 'Search.*' );
+        searchModel
+            .list( { q: 'ihpone6' } )
+            .list( { q: '冲锋衣' } )
+            .suggest( { q: 'i' } )
+            .getNav( { q: '滑板' } )
+            .done( function( data1, data2, data3, data4 ) {
+                console.log( '这是由前端合并请求的结果:');
+                console.log( {
+                    "list_ihpone6": data1,
+                    "list_冲锋衣": data2,
+                    "suggest_i": data3,
+                    "getNav_滑板": data4
+                } );
+            } );
+
+        // For post demo
+        var $btn = Node.all( '#postBtn' );
+        $btn.on( 'click', function( e ) {
+            var params = { 
+                id: Node.one('#id').val(),
+                content: Node.one('#content').val(),
+                longJSON: '{"a":"b","c":"d"}'
+            };
+            var postModel = ModelProxy.create( 'Test.post' );
+            postModel.post( params )
+                .done( function( result ) {
+                    alert( result );
+                } );
+        } );
+    } );
+    
+    KISSY.use( "io", function( S, IO ) {
+        IO( {
+            url: '/getCombinedData',
+            dataType: 'json',
+            type: 'get',
+            success: function( data ) {
+                console.log( '这是由服务器端合并后的结果:' );
+                console.log( data );
+            }
+        } )
+    } );
+</script>
+</body>
+</html>
