@@ -1,8 +1,0 @@
-{
-	"expr": true,
-    "node": true,
-    "asi": true,
-    "unused": "vars",
-    "supernew": true,
-    "strict": false
-}
