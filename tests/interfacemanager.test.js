@@ -189,6 +189,7 @@ describe( 'interfaceManager', function() {
 
   it( 'clientInterfaces should be initalized after the object of interfaceManager is created', function() {
     var clientInterfaces = interfaceManager.getClientInterfaces();
+    console.log( clientInterfaces );
     assert.notEqual( clientInterfaces, null );
     var cnt = 0;
     for ( var i in clientInterfaces ) cnt++;

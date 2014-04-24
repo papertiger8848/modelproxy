@@ -1,36 +1,4 @@
 {
-    "meta": {
-        "name": "这是接口名",
-        "description": "这是接口的详细描述",
-        "type": ["GET", "POST"],
-        "responseMap": [
-            {
-                "rule": [
-                    {
-                        "type": "response",
-                        "property": "status",
-                        "value": "-1"
-                    }
-                ],
-                "schema": "responseError"
-            },
-            {
-                "rule": [
-                    {
-                        "type": "request",
-                        "property": "search",
-                        "pattern": "[A-Z]"
-                    },
-                    {
-                        "type": "response",
-                        "property": "status",
-                        "value": "1"
-                    }
-                ],
-                "schema": "response2"
-            }
-        ]
-    },
     "request": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",

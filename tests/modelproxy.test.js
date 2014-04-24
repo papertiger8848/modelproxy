@@ -12,7 +12,31 @@ describe( 'ModelProxy', function() {
       } );
     } );
   } );
+
+  describe( '#setLogger()', function() {
+    it( 'should replace the console with the specified logger', function() {
+      var logger = {
+        info: function( msg ) {
+          console.log( 'INFO:', msg );
+        },
+        log: function( msg ) {
+          console.log( 'LOG:', msg );
+        },
+        error: function( msg ) {
+          console.log( 'ERROR:', msg );
+        },
+        warn: function( msg ) {
+          console.log( 'WARN:', msg );
+        }
+      };
+      
+      ModelProxy.setLogger( logger );
+      
+    } );
+  } );
+
   ModelProxy.init( '../tests/interface_test.json' );
+  
   describe( '#create()', function() {
     it( 'should return an object with methods specified by the profile', function() {
       var m = ModelProxy.create( 'Search.suggest' );

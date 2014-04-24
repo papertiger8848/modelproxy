@@ -21,4 +21,4 @@ var rule = fs.readFileSync( './interfaceRules/test.rule.json' );
 
 var schema = JSON.parse( rule );
 // console.log( schema );
-console.log( mocker.spec2mock( schema ) );
+console.log( mocker.spec2mock( schema, 'response' ) );

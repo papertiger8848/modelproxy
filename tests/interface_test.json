@@ -2,7 +2,7 @@
     "title": "midway example interface configuration",
     "version": "1.0.0",
     "engine": "mockjs",
-    "rulebase": "./interfaceRules/",
+    "rulebase": "interfaceRules",
     "status": "online",
     "interfaces": [ {
         "name": "我的购物车",
